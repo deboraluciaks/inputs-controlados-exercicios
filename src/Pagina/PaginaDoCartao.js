@@ -1,5 +1,7 @@
 import Cartao from "../Componentes/Cartao";
 import { LayoutDaPagina } from "./estiloDaPaginaDoCartao";
+import Formulario from '../Componentes/Formulario';
+import React, { useState } from "react";
 
 
 
@@ -7,24 +9,58 @@ import { LayoutDaPagina } from "./estiloDaPaginaDoCartao";
 function PaginaDoCartao() {
     //declare os estados aqui
 
+    const [pagamento, setPagamento] = useState("");
+    const [nome, setNome] = useState("");
+    const [num, setNum] = useState("");
+    const [val, setVal] = useState("");
+    const [cvc, setCvc] = useState("");
 
-    //declare as funções de controle de inputs aqui
+
+
+	const mudarPagamento = (event) => {
+	    setPagamento(event.target.value);
+	};
+
+	const mudarNome = (event) => {
+	    setNome(event.target.value);
+	};  
+
+	const mudarNum = (event) => {
+	    setNum(event.target.value);
+	};
+
+	const mudarVal = (event) => {
+	    setVal(event.target.value);
+	};
+
+	const mudarCvc = (event) => {
+	    setCvc(event.target.value);
+	};
+
 
     return (
         <LayoutDaPagina>
-            {/* Passe as variáveis de estado para o Cartão. Use Props. */}
-            <Cartao
-                pagamento={"Crédito"}
-                numero={"3652 6589 7458 1254"}
-                nome={"Luciano Naganawa"}
-                cvc={"131"}
-                validade={"03/29"}
+            <Cartao 
+                pagamento={pagamento}
+                numero={num}
+                nome={nome}
+                cvc={cvc}
+                validade={val}
             />
-
-            {/* Chame o Componente Formulário Aqui */}
-            {/* Passe a função de controle de input e variável de estado para o formulário. Para isso use Props */}
-
-
+            <Formulario
+                mudarPagamento={mudarPagamento}
+                mudarNum={mudarNum}
+                mudarNome={mudarNome}
+                mudarCvc={mudarCvc}
+                mudarVal={mudarVal}
+                
+                setPagamento={setPagamento}
+                setNum={setNum}
+                setNome={setNome}
+                setCvc={setCvc}
+                setVal={setVal}
+            
+            />
         </LayoutDaPagina>
 
     );

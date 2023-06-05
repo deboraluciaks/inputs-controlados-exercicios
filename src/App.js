@@ -2,6 +2,7 @@
 import { createGlobalStyle } from 'styled-components'
 import PaginaDoCartao from './Pagina/PaginaDoCartao';
 
+
 const GlobalStyles = createGlobalStyle`
   * {
     margin: 0;
